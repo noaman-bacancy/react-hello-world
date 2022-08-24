@@ -35,8 +35,9 @@ pipeline {
                     }
             steps
             {   
-                sh "npm install"
+                
                 script {
+                        sh "npm install"
                         sh "mv .env.develop .env"
                         sh "npm run build"
                         stash includes: 'build/**/*', name: 'BUILD'
