@@ -48,7 +48,7 @@ pipeline {
             {
                 script {
                     unstash 'BUILD'
-                    if (env.BRANCH_NAME == "${development_branch}" && env.NODE_LABEL != "master")
+                    if (env.BRANCH_NAME == "${development_branch}")
                     {
                         sshagent ( ["${agentName}"]) {
                             sh "ls build"
@@ -57,7 +57,7 @@ pipeline {
                             sh "docker system prune -f"
                         }
                     }
-                    else if (env.BRANCH_NAME == "${production_branch}" && env.NODE_LABEL != "master" )
+                    else if (env.BRANCH_NAME == "${production_branch}" )
                     {   
                         sshagent ( ["${agentName}"]) {
                             sh "ls build"
