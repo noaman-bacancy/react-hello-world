@@ -40,7 +40,7 @@ pipeline {
             {   
                 sh "npm install"
                 script {
-                        sh "apt update && apt -y install rsync"
+                        
                         sh "npm run build"
                         stash includes: 'build/**/*', name: 'BUILD'
                 }
@@ -65,6 +65,7 @@ pipeline {
                     {   
                         sshagent ( ["${agentName}"]) {
                             sh "ls build"
+                            sh "apt update && apt -y install rsync"
                             sh "rsync -avrHP -e 'ssh -o StrictHostKeyChecking=no' --delete build/ ${user}@${ip_address}:${deploy_path}"
                             sh "docker system prune -f"
                         }
