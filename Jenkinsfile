@@ -3,7 +3,6 @@ pipeline {
     agent {
         docker {
             image 'node:14'
-            args '-u root'
         }
     }
 
@@ -11,6 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+                docker.image('node:14').withRun('--cgroupns host')
                 sh 'npm install'
             }
         }
