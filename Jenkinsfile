@@ -9,7 +9,7 @@ def user = ''
 
 if (env.BRANCH_NAME == "${development_branch}")
 {
-  agentName = '2440e3e5-5a5f-47f4-8df9-4a96e7dda2cf'
+  agentName = 'dev'
   ip_address = "3.15.103.154"
   user = "ubuntu"
 }
