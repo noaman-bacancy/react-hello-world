@@ -40,7 +40,7 @@ pipeline {
             {   
                 sh "npm install"
                 script {
-                        
+                        sh "apt update && apt -y install rsync"
                         sh "npm run build"
                         stash includes: 'build/**/*', name: 'BUILD'
                 }
