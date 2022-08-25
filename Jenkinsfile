@@ -1,6 +1,6 @@
 def project_name = 'inkwiry'
 def production_branch = ''
-def development_branch = 'optimization/remove-assets'
+def development_branch = 'master'
 
 if (env.BRANCH_NAME == "${development_branch}")
 {
@@ -11,10 +11,10 @@ if (env.BRANCH_NAME == "${development_branch}")
 }
 if (env.BRANCH_NAME == "${production_branch}")
 {
-  deploy_path = ''
-  agentName = ''
-  ip_address = ''
-  user = ''
+  agentName = 'dev'
+  ip_address = '3.15.103.154'
+  user = 'ubuntu'
+  deploy_path = '/var/www/html/inkwiry-develop'
 }
 
 pipeline {
